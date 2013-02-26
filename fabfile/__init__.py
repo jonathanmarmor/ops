@@ -9,6 +9,7 @@ import forever
 
 # Application-specific tasks
 import centaur
+import phase
 
 
 # Fabric config
