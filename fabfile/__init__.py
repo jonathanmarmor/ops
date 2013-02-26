@@ -1,11 +1,14 @@
 from fabric.api import env, task, sudo
 
-# utilities
+# Utilities
 import apt
 import pip
 import npm
 import git
 import forever
+
+# Application-specific tasks
+import centaur
 
 
 # Fabric config
