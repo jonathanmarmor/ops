@@ -1,4 +1,4 @@
-from fabric.api import env, task
+from fabric.api import env, task, cd, run, sudo
 
 import apt
 import git
@@ -40,3 +40,23 @@ def deploy(rm_node_modules=False):
         npm.rm_node_modules(env.repo)
     npm.install(env.repo)
     restart()
+
+
+# @task
+# def rm_audio():
+#     """Delete all files except sample.mp3 from /static/audio/"""
+
+#     # This doesn't work via fab for some reason
+#     sudo("""for file in /home/ubuntu/apps/{}/static/audio/*
+#     do
+#        case "$file" in
+#          sample.mp3 ) continue;;
+#          * ) rm $file;;
+#        esac
+#     done""".format(env.repo))
+
+#     # neither does this
+#     with cd('/home/ubuntu/apps/{}/static/audio/'.format(env.repo)):
+#         run('shopt -s extglob')  # Enables extglob
+#         sudo('rm !(sample*)')
+#         run('shopt -u extglob')  # Disables extglob
