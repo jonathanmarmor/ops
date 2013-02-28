@@ -1,7 +1,12 @@
-from distutils.core import setup
+from setuptools import setup, find_packages
 
 setup(
     name='ops',
     version='0.1',
-    packages=['ops']
+    description='Fabric tasks setting up and managing my apps.',
+    author='Jonathan Marmor',
+    author_email='jmarmor@gmail.com',
+    url='http://github.com/jonathanmarmor/ops',
+    packages=find_packages(),
+    install_requires=['fabric>=1.4.3'],
 )
