@@ -7,6 +7,5 @@ setup(
     author='Jonathan Marmor',
     author_email='jmarmor@gmail.com',
     url='http://github.com/jonathanmarmor/ops',
-    packages=find_packages(),
-    install_requires=['fabric>=1.4.3'],
+    packages=find_packages()
 )
