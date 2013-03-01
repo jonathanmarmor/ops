@@ -1,7 +1,6 @@
 from fabric.api import env, task, sudo
 
 # Utilities
-import apt
 import pip
 import npm
 import git

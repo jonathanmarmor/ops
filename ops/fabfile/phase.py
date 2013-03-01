@@ -1,6 +1,7 @@
-from fabric.api import env, task, cd, run, sudo
+from fabric.api import env, task
 
-import apt
+from fab_apt import apt
+
 import git
 import npm
 import forever
