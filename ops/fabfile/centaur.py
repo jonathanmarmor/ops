@@ -1,10 +1,9 @@
 from fabric.api import env, task
 
-from fab_apt import apt
-
-import git
-import npm
-import forever
+from fab_utils import apt
+from fab_utils import git
+from fab_utils import npm
+from fab_utils import forever
 
 
 env.repo = 'centaur'
@@ -12,7 +11,18 @@ env.repo = 'centaur'
 
 @task
 def install():
-    apt.install()
+    apt.add_repository('ppa:chris-lea/node.js')
+    apt.update()
+    apt.install([
+        'gcc',
+        'make',
+        'g++',
+        'git',
+        'python',
+        'python-software-properties',
+        'nodejs',
+        'npm'
+    ])
     git.clone(env.repo)
     npm.install(env.repo)
     npm.install_globals('forever')

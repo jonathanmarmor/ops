@@ -1,3 +1,3 @@
 ### Required Packages ###
 Fabric>=1.4.3
--e git+https://github.com/exfm/fab-apt.git#egg=fab-apt
+-e git+https://github.com/jonathanmarmor/fab-utils.git#egg=fab-utils
