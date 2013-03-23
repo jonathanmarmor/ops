@@ -1,4 +1,4 @@
-from fabric.api import env, task
+from fabric.api import task
 
 from fab_utils import apt
 from fab_utils import git
@@ -6,7 +6,7 @@ from fab_utils import npm
 from fab_utils import forever
 
 
-env.repo = 'centaur'
+REPO = 'centaur'
 
 
 @task
@@ -20,34 +20,33 @@ def install():
         'git',
         'python',
         'python-software-properties',
-        'nodejs',
-        'npm'
+        'nodejs'
     ])
-    git.clone(env.repo)
-    npm.install(env.repo)
+    git.clone(REPO)
+    npm.install(REPO)
     npm.install_globals('forever')
     start()
 
 
 @task
 def start():
-    forever.start(env.repo)
+    forever.start(REPO)
 
 
 @task
 def stop():
-    forever.stop(env.repo)
+    forever.stop(REPO)
 
 
 @task
 def restart():
-    forever.restart(env.repo)
+    forever.restart(REPO)
 
 
 @task
 def deploy(rm_node_modules=False):
-    git.update(env.repo)
+    git.update(REPO)
     if rm_node_modules:
-        npm.rm_node_modules(env.repo)
-    npm.install(env.repo)
+        npm.rm_node_modules(REPO)
+    npm.install(REPO)
     restart()
